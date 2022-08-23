@@ -1,0 +1,110 @@
+header {
+    background-color: white;
+    padding: 1.5rem 9%;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    top: 0; 
+    left: 0; 
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+  }
+  
+  header #toggler {
+    display: none;
+  }
+  
+  header .fa-bars {
+    font-size: 1.7rem;
+    color: rgb(64, 62, 62);
+    display: none;
+    border-radius: 0.5rem;
+    padding: 0.2rem 1rem;
+    cursor: pointer;
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  }
+  
+  header .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: cornflowerblue;
+  }
+  
+  header .navbar a {
+    font-size: 20px;
+    padding: 0 2rem;
+    color: rgb(79, 77, 77);
+  }
+  
+  header .navbar a:hover {
+    color: cornflowerblue; 
+  }
+  
+  header .icons a {
+    font-size: 25px;
+    color: cornflowerblue;
+    margin-left: 2rem;
+  }
+  
+  header .icons a:hover {
+    color: rgb(32, 102, 231);
+  }
+  #shorten {
+    background-color: cornflowerblue;
+  }
+  #shorten:hover {
+    background: none;
+    border: 1px solid cornflowerblue;
+    color: cornflowerblue;
+  }
+
+  @media (max-width:991px) {
+    header{
+        padding: 1.1rem;
+    }
+    header .logo {
+      font-size: 1.8rem;
+    }
+  }
+  @media(width:360px) {
+    header{
+        padding: 1rem;
+    }
+  }
+  
+  @media (max-width:768px) {
+    header .fa-bars {
+        display: block;
+    }
+  
+    header .navbar {
+        position: absolute;
+        top: 100%; 
+        left: 0; 
+        right: 0;
+        background: rgb(247, 244, 244);
+        border-top: 1px solid rgba(0,0,0,.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+  
+    header #toggler:checked ~ .navbar {
+        clip-path:polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+  
+    header .navbar a {
+        margin: 1px;
+        padding: 3px;
+        background: #fff;
+        border: 1px solid rgba(0,0,0,.1);
+        display: block;
+    } 
+  }
+  
+  #link {
+    padding-left: 25px;
+    margin-right: 5px;
+    background: url("https://image.shutterstock.com/image-vector/link-flat-icon-illustration-vector-600w-1551448580.jpg") no-repeat left;
+    background-size: 30px;
+  }

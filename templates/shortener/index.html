@@ -1,0 +1,189 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julie's project: Django Url Shortener</title>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+   
+  <!-- Tailwindcss link-->
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Font awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
+</head>
+<body>
+  <header>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+
+    <a href="#" class="logo">Shally's Shortly</a>
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#services">Services</a>
+        <a href="#">Contact</a>
+        <a href="#">Sign In</a>
+        <a href="#">Sign Up</a>
+    </nav> 
+
+    <div class="icons">
+        <a href="" target="_blank" class="fas fa-user"></a>
+    </div>
+</header>
+
+<main>
+  <section class="text-gray-600 body-font">
+    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center md:mt-16">
+      <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Wanna shorten those long links?</h1>
+        <p class="mb-8 leading-relaxed">Try us out!! amet consectetur adipisicing elit. Nulla quibusdam ipsa totam amet esse, consequuntur aliquid repellat dolore est doloribus,
+           enim ducimus ratione atque illo maiores ex eum obcaecati suscipit? Lorem ipsum dolor sit amet, 
+          consectetur adipisicing elit. Tempore illum mollitia totam cumque ducimus soluta atque corrupti alias similique deserunt.</p>
+        <div class="flex w-full md:justify-start justify-center items-end">
+          <div class="relative mr-4 md:w-full lg:w-full xl:w-1/2 w-2/4">
+            <form id="post-form">
+              {% csrf_token %}
+              <input type="text" name="link" id="link" placeholder="Enter URL here" class="w-full bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-black py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+    
+          <button type="submit" id="shorten" class="inline-flex text-white  border-0 py-2 px-6 focus:border-blue-500 focus:outline-none rounded text-lg">Shorten</button>
+        </form>     
+        </div>
+
+        <section class="flex">
+          <h2 class="text-sm mt-2 text-black mb-8 w-full border border-blue-600 py-1 px-3 text-base rounded" id="p1"></h2>
+        </section>
+        <button onclick="copyToClipboard('p1')" class="inline-flex text-white bg-blue-500 border-0 py-2 px-2 focus:border-blue-500 focus:outline-none rounded text-lg">Copy shortened url</button>
+      </div>
+      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+        <img class="object-cover object-center rounded" alt="hero" src="{% static 'img/image.png' %}">
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- Users and download section: statistics section -->
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-12">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-black">Stats of our url shortener's  usage</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+      <div class="flex flex-wrap -m-4 text-center">
+
+        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+          <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+            <i class="fa fa-users text-blue-600 w-12 h-12 inline-block"></i>
+            <h2 class="title-font text-lg">Total Users</h2>
+            <h2 class="title-font font-medium text-xl text-gray-900">34.5k</h2>
+          </div>
+        </div>
+
+        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+          <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+            <i class="fas fa-cloud-download-alt text-blue-600 w-12 h-12 inline-block"></i>
+            <h2 class="title-font text-lg">Total Downloads</h2>
+            <h2 class="title-font font-medium text-xl text-gray-900">35.2k</h2>
+          </div>
+        </div>
+
+        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+          <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+            <i class="fa fa-check-square text-blue-600 w-12 h-12 inline-block"></i>
+            <h2 class="title-font text-lg">Continent Approval</h2>
+            <h2 class="title-font font-medium text-xl text-gray-900">6</h2>
+          </div>
+        </div>
+
+        <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+          <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+            <i class="fas fa-universal-access text-blue-600 w-12 h-12 inline-block"></i>
+            <h2 class="title-font text-lg">Universal access</h2>
+            <h2 class="title-font font-medium text-xl text-gray-900">150</h2>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+<!-- Subscribe section -->
+  <section class="text-gray-600 body-font">
+    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+        <img class="object-cover object-center rounded" alt="hero" src="{% static 'img/image.png' %}">
+      </div>
+      <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Subscribe to our newsletter</h1>
+        <div class="flex w-full md:justify-start justify-center items-end">
+          <div class="relative mr-4 lg:w-full xl:w-1/2 w-2/4">
+            <input type="text" id="hero-field" name="hero-field" placeholder="Enter your emai address" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+          <button class="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue600 rounded text-lg">Subscribe</button>
+        </div>
+
+        <p class="text-base mt-4 text-black mb-8 w-full">Want to download the mobile app? Easy. Just download it via google play <br>store for android users or app store for ios users.</p>
+        <div class="flex lg:flex-row md:flex-col">
+          <button class="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">
+            <i class="fab fa-google-play w-6 h-4"></i>
+            <span class="ml-4 flex items-start flex-col leading-none">
+              <span class="text-xs text-gray-600 mb-1">GET IT ON</span>
+              <span class="title-font font-medium">Google Play</span>
+            </span>
+          </button>
+          <button class="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center lg:ml-4 md:ml-0 ml-4 md:mt-4 mt-0 lg:mt-0 hover:bg-gray-200 focus:outline-none">
+            <i class="fab fa-apple w-6 h-4"></i>
+            <span class="ml-4 flex items-start flex-col leading-none">
+              <span class="text-xs text-gray-600 mb-1">Download on the</span>
+              <span class="title-font font-medium">App Store</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<footer class="text-gray-600 body-font">
+  <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+    <a class="flex title-font font-bold items-center md:justify-start justify-center text-blue-600">
+      <span class="ml-3 text-xl">Shally's Shortly</span>
+    </a>
+    <p class="text-base text-black sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">Copyright © 2022 | urlshortener co. 
+    </p>
+    <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+      <a class="ml-4 text-blue-600">
+        <i class="w-5 h-5 cursor-pointer fab fa-linkedin"></i>
+      </a>
+      <a class="ml-4 text-blue-600">
+        <i class="w-5 h-5 cursor-pointer fab fa-twitter"></i>
+      </a>
+      <a class="ml-4 text-blue-600">
+        <i class="w-5 h-5 cursor-pointer fab fa-instagram"></i>
+      </a>
+    </span>
+  </div>
+</footer>
+
+
+<!-- Link to external javascript file -->
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
